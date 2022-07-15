@@ -57,7 +57,7 @@ function handleTodoItemAdded() {
         completed: false,
         userId: 1
     }
-    reactiveTodos.value.push(additem)
+    reactiveTodos.value.push(additem);
     counter.added++;
 }
 
@@ -83,7 +83,7 @@ watch(checkbox, newValue => {
 
     <p>Updated: {{ counter.updated }}</p>
     <p>Deleted: {{ counter.deleted }}</p>
-    <p>Added: {{ counter.deleted }}</p>
+    <p>Added: {{ counter.added }}</p>
     <div class="todo-list">
         <TodoListItem
             v-for="todo of reactiveTodos"

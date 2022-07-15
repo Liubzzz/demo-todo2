@@ -18,10 +18,12 @@ function handleChange(event) {
 </script>
  
 <template>
-    <input type="checkbox" :checked="completed" @change="handleChange" />
+    <input type="checkbox"  :checked="completed" @change="handleChange"   />       
     <p>{{ newTitle }}</p>
     <button @click="$emit('todoItemDeleted')">Delete</button>
 </template>
 
 <style scoped>
+
+
 </style>

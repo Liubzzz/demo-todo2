@@ -71,7 +71,7 @@ watch(checkbox, newValue => {
 
 <template>
     <span>Two-way data binding (v-model):</span>
-    <input type="checkbox" v-model="checkbox" />
+    <input type="checkbox" v-model="checkbox"  />
     <div>
         <span><input  v-model ="newi" type="text" /></span>
          <button  @click= "handleTodoItemAdded"  :disabled="isdisabled" class="button-33" role="button">Add</button>
@@ -108,7 +108,7 @@ watch(checkbox, newValue => {
 
 
 
-/* CSS */
+/* CSS button*/
 .button-33 {
   background-color: #c2fbd7;
   border-radius: 100px;
@@ -133,4 +133,22 @@ watch(checkbox, newValue => {
   transform: scale(1.05) rotate(-1deg);
 }
 
+
+
+
+
+/*checkbox */
+
+
+
+
+
+
+
+
+
+
+
 </style>
+
+

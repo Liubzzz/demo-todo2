@@ -8,7 +8,7 @@ const props = defineProps({
     completed: Boolean
 });
 
-const emit = defineEmits(['todoItemDeleted', 'todoItemCompleted']);
+const emit = defineEmits(['todoItemDeleted', 'todoItemCompleted', 'todoItemAdded']);
 
 const newTitle = computed(() => printTodoItem(props.id, props.title, props.completed));
 
@@ -16,7 +16,7 @@ function handleChange(event) {
     emit('todoItemCompleted', event.target.checked);
 }
 </script>
-
+ 
 <template>
     <input type="checkbox" :checked="completed" @change="handleChange" />
     <p>{{ newTitle }}</p>

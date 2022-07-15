@@ -9,7 +9,8 @@ const reactiveTodos = ref(todos);
 
 const counter = reactive({
     deleted: 0,
-    updated: 0
+    updated: 0,
+    added: 0
 });
 // const counter = ref(0);
 
@@ -17,7 +18,15 @@ function getUpdatedCounter() {
     return counter.updated;
 }
 
-watch(() => counter.updated, (newValue, oldValue) => {
+const newi= ref();
+let isdisabled=ref(true);
+watch(() => newi.value, (newValue, oldValue) => {
+    if(newValue!= "")
+    {isdisabled.value=false;}
+    else
+     {isdisabled.value=true;}
+
+
     console.log(`Counter updated ${oldValue} -> ${newValue}`);
 });
 
@@ -40,6 +49,19 @@ function handleTodoItemCompleted(todoItemId, completed) {
     counter.updated++;
 }
 
+
+function handleTodoItemAdded() {
+    const additem={
+        id: 1,
+        title: newi.value,
+        completed: false,
+        userId: 1
+    }
+    reactiveTodos.value.push(additem)
+    counter.added++;
+}
+
+
 const checkbox = ref(true);
 
 watch(checkbox, newValue => {
@@ -51,8 +73,8 @@ watch(checkbox, newValue => {
     <span>Two-way data binding (v-model):</span>
     <input type="checkbox" v-model="checkbox" />
     <div>
-        <span><input type="text"/></span>
-         <button class="button-33" role="button">Add</button>
+        <span><input  v-model ="newi" type="text" /></span>
+         <button  @click= "handleTodoItemAdded"  :disabled="isdisabled" class="button-33" role="button">Add</button>
     
     
     
@@ -61,6 +83,7 @@ watch(checkbox, newValue => {
 
     <p>Updated: {{ counter.updated }}</p>
     <p>Deleted: {{ counter.deleted }}</p>
+    <p>Added: {{ counter.deleted }}</p>
     <div class="todo-list">
         <TodoListItem
             v-for="todo of reactiveTodos"

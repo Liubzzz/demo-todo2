@@ -15,7 +15,7 @@ const counter = reactive({
 // const counter = ref(0);
 
 function getUpdatedCounter() {
-    return counter.updated;
+    return  counter.updated;
 }
 
 const newi= ref();

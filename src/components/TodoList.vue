@@ -92,7 +92,7 @@ watch(checkbox, newValue => {
     <div><input v-model="varnew" type="text"></div>
          <button  @click= "handleTodoItemAdded"  :disabled="isdisabled" class="button-33" role="button">Add</button>
          <button  @click= "created()"  class="button-33" role="button">Create</button>
-         <p> {{company.name}}</p>
+         <p> {{company}}</p>
 
     
     

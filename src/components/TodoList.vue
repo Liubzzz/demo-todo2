@@ -1,11 +1,26 @@
 <script setup>
 import TodoListItem from './TodoListItem.vue';
 import { ref, reactive, toRefs, watch } from 'vue';
+import axios from 'axios'
+import { createDOMCompilerError } from '@vue/compiler-dom';
 
 const response = await fetch('https://jsonplaceholder.typicode.com/todos');
 let todos = await response.json();
 todos = todos.slice(0, 10);
 const reactiveTodos = ref(todos);
+
+let company=ref()
+let varnew=ref()
+
+function created(){
+    axios.get(`http://localhost:8081/company?name=${varnew.value}`)
+  .then(response=> company.value=response.data.data.company)
+  .catch(error => {
+    this.errorMessage= error.message;
+    console.error("there was an error", error);
+  });
+  console.log(company)
+}
 
 const counter = reactive({
     deleted: 0,
@@ -74,7 +89,11 @@ watch(checkbox, newValue => {
     <input type="checkbox" v-model="checkbox"  />
     <div>
         <span><input  v-model ="newi" type="text" /></span>
+    <div><input v-model="varnew" type="text"></div>
          <button  @click= "handleTodoItemAdded"  :disabled="isdisabled" class="button-33" role="button">Add</button>
+         <button  @click= "created()"  class="button-33" role="button">Create</button>
+         <p> {{company.name}}</p>
+
     
     
     

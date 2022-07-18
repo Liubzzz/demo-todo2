@@ -88,8 +88,8 @@ watch(checkbox, newValue => {
     <span>Two-way data binding (v-model):</span>
     <input type="checkbox" v-model="checkbox"  />
     <div>
-        <span><input  v-model ="newi" type="text" /></span>
-    <div><input v-model="varnew" type="text"></div>
+        <span> Add bar <input  v-model ="newi" type="text" /></span>
+    <div> Create bar <input v-model="varnew" type="text"></div>
          <button  @click= "handleTodoItemAdded"  :disabled="isdisabled" class="button-33" role="button">Add</button>
          <button  @click= "created()"  class="button-33" role="button">Create</button>
          <p> {{company}}</p>

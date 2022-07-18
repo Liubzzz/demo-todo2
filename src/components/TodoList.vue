@@ -9,8 +9,8 @@ let todos = await response.json();
 todos = todos.slice(0, 10);
 const reactiveTodos = ref(todos);
 
-let company=ref()
-let varnew=ref()
+let company=ref("")
+let varnew=ref("")
 
 function created(){
     axios.get(`http://localhost:8081/company?name=${varnew.value}`)
